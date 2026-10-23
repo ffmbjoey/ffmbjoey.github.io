@@ -127,7 +127,7 @@ header.top .btn { padding: 0.75em 1.1em; font-size: 0.8125rem; }
 @media (max-width: 960px) { .faces { transform: none; } }
 .faces button { all: unset; cursor: pointer; display: block; position: relative; border: 1px solid var(--line); background: var(--stone); }
 .faces button:focus-visible { outline: 2px solid var(--ember); outline-offset: 2px; }
-.faces img { aspect-ratio: 1160 / 720; width: 100%; height: auto; object-fit: cover; opacity: .9; transition: opacity .2s, transform .2s; }
+.faces img { aspect-ratio: 1160 / 720; width: 100%; height: auto; object-fit: contain; opacity: .9; transition: opacity .2s, transform .2s; }
 .faces button:hover img { opacity: 1; }
 .faces span {
   position: absolute; left: 6px; bottom: 6px; padding: 3px 6px;
@@ -161,7 +161,7 @@ section { padding-block: 64px; }
 .card { display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--line); min-width: 0; }
 .card .shot { all: unset; cursor: zoom-in; display: block; border-bottom: 1px solid var(--line); background: var(--stone); }
 .card .shot:focus-visible { outline: 2px solid var(--ember); outline-offset: -2px; }
-.card .shot img { aspect-ratio: 1160 / 720; width: 100%; height: auto; }
+.card .shot img { aspect-ratio: 1160 / 720; width: 100%; height: auto; object-fit: contain; }
 .card .body { padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
 .card .tag { color: var(--ember); }
 .card .line { color: var(--bone); font-size: 1.0625rem; }
@@ -208,7 +208,7 @@ footer img { height: 22px; width: auto; opacity: .8; }
 /* ---------- lightbox + toast ---------- */
 .lightbox { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; background: color-mix(in srgb, var(--void) 92%, transparent);
   padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
-.lightbox figure { margin: 0; max-width: 1160px; width: 100%; }
+.lightbox figure { margin: 0; max-width: 1300px; width: 100%; }
 .lightbox img { width: 100%; height: auto; border: 1px solid var(--line); }
 .lightbox figcaption { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
 .toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 60;
@@ -389,7 +389,7 @@ const STORE = {
       points: ["HARD mode with a HEAVY knob: clean snap to full robot", "CLASSIC mode with retune speed, humanize and vibrato", "Pitch shift that stays in key, plus formant", "Low Latency mode for recording, LINK to Dungeon Key"] },
     { id: "rack",    name: "Dungeon Rack",    tag: "Vocal chain",     price: 25, checkout: "",
       line: "A full vocal channel strip run by one big knob.",
-      points: ["Noise gate and Auto Level for any recording", "Compress plus SMASH parallel compression", "Body, presence and air, a de-esser and saturation", "LOUD limiter and 6 styles, from Clean to Rage"] },
+      points: ["Noise gate and Auto Level for any recording", "Compress plus SMASH parallel compression", "3-band EQ to cut hiss and hum, plus body, presence, air, de-esser and saturation", "LOUD limiter and 6 styles, from Clean to Rage"] },
     { id: "doubler", name: "Dungeon Doubler", tag: "Stacks",          price: 19, checkout: "",
       line: "One take becomes a wide stack with octaves and harmony.",
       points: ["2 to 8 doubles spread across the stereo field", "Octave down and up layers with natural formants", "In-key harmony: 3rd up, 5th up, 3rd down, 4th down", "Takes its key from Dungeon Key"] },
