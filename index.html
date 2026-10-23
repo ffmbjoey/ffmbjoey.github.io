@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dungeon Pack by FFMB Joey</title>
+<meta name="description" content="Dungeon Pack by FFMB Joey: nine VST3 plugins for dark, loud, underground vocals. Buy each plugin or the whole pack.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap">
+<meta property="og:title" content="Dungeon Pack by FFMB Joey">
+<meta property="og:description" content="Nine VST3 plugins for dark, loud, underground vocals.">
+<meta property="og:image" content="https://ffmbjoey.github.io/img/dungeon-tune.webp">
+<style>
+/* Layout: one dark crypt. Hero = wordmark + the pack offer beside the nine plugin faces,
+   then the vocal chain they form, the catalogue, install, FAQ. Single deliberate dark theme. */
+:root {
+  --void:  #070708;
+  --stone: #0d0d11;
+  --panel: #121217;
+  --line:  #26262e;
+  --ash:   #9a9aa8;
+  --bone:  #d9d9e0;
+  --blood: #9e1029;
+  --ember: #ff2b4e;
+  --font-ui: "Chakra Petch", "Bahnschrift", "Arial Narrow", sans-serif;
+  --font-body: "Barlow", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.75rem;
+  --step-3: 2.5rem;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+body {
+  background:
+    radial-gradient(1200px 600px at 78% -10%, color-mix(in srgb, var(--blood) 22%, transparent), transparent 70%),
+    radial-gradient(900px 500px at 0% 40%, color-mix(in srgb, var(--blood) 10%, transparent), transparent 70%),
+    var(--void);
+  color: var(--bone);
+  font: 400 var(--step-0)/1.6 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--void); }
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+.wrap {
+  max-width: 1180px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.label {
+  font: 600 var(--step--1)/1.2 var(--font-ui);
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--ash);
+}
+h2 {
+  font: 700 var(--step-3)/1.05 var(--font-ui);
+  letter-spacing: 0.04em; text-transform: uppercase; margin: 0;
+  text-wrap: balance;
+}
+h3 { font: 700 var(--step-1)/1.15 var(--font-ui); letter-spacing: 0.08em; text-transform: uppercase; margin: 0; }
+p { margin: 0; }
+:focus-visible { outline: 2px solid var(--ember); outline-offset: 3px; }
+
+/* ---------- buttons ---------- */
+.btn {
+  --clip: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.6em;
+  font: 700 0.9375rem/1 var(--font-ui); letter-spacing: 0.16em; text-transform: uppercase;
+  color: #fff; text-decoration: none; cursor: pointer;
+  padding: 0.95em 1.4em; border: 0;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--ember) 85%, #fff 0%), var(--blood));
+  clip-path: var(--clip);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--ember) 35%, transparent);
+  transition: filter .15s, transform .15s;
+}
+.btn:hover { filter: brightness(1.12); }
+.btn:active { transform: translateY(1px); }
+.btn.ghost { background: var(--panel); color: var(--bone); box-shadow: inset 0 0 0 1px var(--line); }
+.btn.ghost:hover { box-shadow: inset 0 0 0 1px var(--ash); }
+.btn .price { font-variant-numeric: tabular-nums; }
+
+/* ---------- header ---------- */
+header.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: color-mix(in srgb, var(--void) 86%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+header.top .wrap { display: flex; align-items: center; gap: 24px; padding-block: 10px; }
+header.top .mark { height: 26px; width: auto; }
+header.top nav { display: flex; gap: 22px; margin-left: auto; }
+header.top nav a { text-decoration: none; font: 600 var(--step--1)/1 var(--font-ui); letter-spacing: 0.18em; text-transform: uppercase; color: var(--ash); }
+header.top nav a:hover { color: var(--bone); }
+header.top .btn { padding: 0.75em 1.1em; font-size: 0.8125rem; }
+@media (max-width: 760px) { header.top nav { display: none; } header.top .btn { margin-left: auto; } }
+
+/* ---------- hero ---------- */
+.hero { padding-block: 56px 40px; }
+.hero .grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 48px; align-items: center; }
+@media (max-width: 960px) { .hero .grid { grid-template-columns: minmax(0, 1fr); } }
+.hero .wordmark { width: 100%; max-width: 620px; height: auto; }
+.hero .by { margin-top: 6px; padding-left: 4px; }
+.hero .thesis { font: 600 var(--step-2)/1.2 var(--font-ui); letter-spacing: 0.02em; margin-top: 28px; max-width: 24ch; text-wrap: balance; }
+.hero .sub { color: var(--ash); margin-top: 14px; max-width: 52ch; font-size: 1.0625rem; }
+.offer {
+  margin-top: 28px; padding: 22px 22px 20px; position: relative;
+  background: linear-gradient(180deg, var(--panel), var(--stone));
+  border: 1px solid var(--line);
+  max-width: 520px;
+}
+.offer::before, .offer::after { content: ""; position: absolute; width: 14px; height: 14px; border: 1.5px solid var(--ember); }
+.offer::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+.offer::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+.offer .row { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.offer .big { font: 700 3rem/1 var(--font-ui); font-variant-numeric: tabular-nums; }
+.offer s { color: var(--ash); font: 600 1.125rem/1 var(--font-ui); }
+.offer .save { font: 700 var(--step--1)/1 var(--font-ui); letter-spacing: 0.14em; color: var(--ember); text-transform: uppercase; }
+.offer .btn { margin-top: 16px; width: 100%; }
+.offer .fine { margin-top: 12px; color: var(--ash); font-size: 0.875rem; }
+
+.faces { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; transform: perspective(1400px) rotateY(-9deg) rotateX(3deg); }
+@media (max-width: 960px) { .faces { transform: none; } }
+.faces button { all: unset; cursor: pointer; display: block; position: relative; border: 1px solid var(--line); background: var(--stone); }
+.faces button:focus-visible { outline: 2px solid var(--ember); outline-offset: 2px; }
+.faces img { aspect-ratio: 1160 / 720; width: 100%; height: auto; object-fit: cover; opacity: .9; transition: opacity .2s, transform .2s; }
+.faces button:hover img { opacity: 1; }
+.faces span {
+  position: absolute; left: 6px; bottom: 6px; padding: 3px 6px;
+  font: 600 0.625rem/1 var(--font-ui); letter-spacing: 0.16em; text-transform: uppercase;
+  background: color-mix(in srgb, var(--void) 80%, transparent); color: var(--bone);
+}
+
+/* ---------- section scaffolding ---------- */
+section { padding-block: 64px; }
+.head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 24px; margin-bottom: 28px; }
+.head p { color: var(--ash); max-width: 56ch; }
+.thorn-rule { height: 18px; margin-block: 0; background:
+  linear-gradient(var(--line), var(--line)) center / 100% 1px no-repeat; position: relative; }
+.thorn-rule::after { content: ""; position: absolute; left: 50%; top: 50%; width: 10px; height: 10px; transform: translate(-50%, -50%) rotate(45deg); background: var(--void); border: 1.5px solid var(--ember); }
+
+/* ---------- chain ---------- */
+.chain { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0; border: 1px solid var(--line); background: var(--stone); }
+.chain li { list-style: none; padding: 16px 16px 18px; border-right: 1px solid var(--line); position: relative; min-width: 0; }
+.chain li:last-child { border-right: 0; }
+.chain .slot { font: 600 0.6875rem/1 var(--font-ui); letter-spacing: 0.18em; color: var(--ember); text-transform: uppercase; }
+.chain .nm { font: 700 1rem/1.2 var(--font-ui); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 8px; }
+.chain .why { color: var(--ash); font-size: 0.875rem; margin-top: 4px; }
+.chain ul { margin: 0; padding: 0; display: contents; }
+@media (max-width: 700px) { .chain li { border-right: 0; border-bottom: 1px solid var(--line); } .chain li:last-child { border-bottom: 0; } }
+.chain-notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin-top: 12px; }
+.chain-notes div { padding: 14px 16px; border: 1px dashed var(--line); color: var(--ash); font-size: 0.9375rem; }
+.chain-notes b { color: var(--bone); font-family: var(--font-ui); letter-spacing: 0.06em; font-weight: 700; text-transform: uppercase; }
+
+/* ---------- catalogue ---------- */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 18px; }
+.card { display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--line); min-width: 0; }
+.card .shot { all: unset; cursor: zoom-in; display: block; border-bottom: 1px solid var(--line); background: var(--stone); }
+.card .shot:focus-visible { outline: 2px solid var(--ember); outline-offset: -2px; }
+.card .shot img { aspect-ratio: 1160 / 720; width: 100%; height: auto; }
+.card .body { padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.card .tag { color: var(--ember); }
+.card .line { color: var(--bone); font-size: 1.0625rem; }
+.card ul { margin: 2px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; color: var(--ash); font-size: 0.9375rem; }
+.card li { padding-left: 18px; position: relative; }
+.card li::before { content: ""; position: absolute; left: 2px; top: 0.62em; width: 7px; height: 7px; transform: rotate(45deg); border: 1.5px solid var(--blood); }
+.card .buy { margin-top: auto; padding-top: 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid var(--line); }
+.card .amt { font: 700 1.75rem/1 var(--font-ui); font-variant-numeric: tabular-nums; }
+.card .amt small { display: block; font: 600 0.6875rem/1.4 var(--font-ui); letter-spacing: 0.16em; color: var(--ash); text-transform: uppercase; }
+.card .btn { padding: 0.85em 1.2em; }
+
+/* ---------- pack band ---------- */
+.pack { border-block: 1px solid var(--line); background:
+  linear-gradient(90deg, color-mix(in srgb, var(--blood) 22%, transparent), transparent 60%), var(--stone); }
+.pack .grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 40px; align-items: center; }
+@media (max-width: 860px) { .pack .grid { grid-template-columns: minmax(0, 1fr); } }
+.pack ol { margin: 18px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px 18px; }
+.pack ol li { display: flex; justify-content: space-between; gap: 10px; padding-block: 6px; border-bottom: 1px solid var(--line); font: 600 0.9375rem/1.2 var(--font-ui); letter-spacing: 0.06em; text-transform: uppercase; }
+.pack ol li span { color: var(--ash); font-variant-numeric: tabular-nums; }
+.pack .offer { max-width: none; margin-top: 0; }
+
+/* ---------- install + faq ---------- */
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 18px; }
+.box { border: 1px solid var(--line); background: var(--panel); padding: 22px; min-width: 0; }
+.steps { counter-reset: s; margin: 16px 0 0; padding: 0; list-style: none; display: grid; gap: 14px; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; color: var(--ash); }
+.steps li::before { content: counter(s); font: 700 1rem/34px var(--font-ui); text-align: center; color: var(--ember); border: 1px solid var(--blood); height: 34px; }
+.steps b { color: var(--bone); font-weight: 600; }
+code { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 0.875em; color: var(--bone); background: var(--stone); padding: 1px 5px; border: 1px solid var(--line); overflow-wrap: anywhere; }
+.reqs { margin: 16px 0 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 18px; }
+.reqs dt { font: 600 var(--step--1)/1.6 var(--font-ui); letter-spacing: 0.16em; text-transform: uppercase; color: var(--ash); }
+.reqs dd { margin: 0; }
+details { border-bottom: 1px solid var(--line); }
+details summary { cursor: pointer; list-style: none; padding: 14px 0; display: flex; justify-content: space-between; gap: 16px; font: 600 1rem/1.3 var(--font-ui); letter-spacing: 0.04em; }
+details summary::-webkit-details-marker { display: none; }
+details summary::after { content: "+"; color: var(--ember); font-size: 1.25rem; line-height: 1; }
+details[open] summary::after { content: "\2212"; }
+details p { color: var(--ash); padding-bottom: 16px; max-width: 64ch; }
+
+footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var(--ash); font-size: 0.875rem; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: center; }
+footer img { height: 22px; width: auto; opacity: .8; }
+
+/* ---------- lightbox + toast ---------- */
+.lightbox { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; background: color-mix(in srgb, var(--void) 92%, transparent);
+  padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.lightbox figure { margin: 0; max-width: 1160px; width: 100%; }
+.lightbox img { width: 100%; height: auto; border: 1px solid var(--line); }
+.lightbox figcaption { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
+.toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 60;
+  background: var(--panel); border: 1px solid var(--blood); padding: 12px 16px; max-width: min(92vw, 460px); font-size: 0.9375rem; }
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="wrap">
+    <a href="#top" aria-label="Dungeon Pack home"><img class="mark" src="img/wordmark.webp" alt="Dungeon Pack" width="1218" height="252"></a>
+    <nav aria-label="Sections">
+      <a href="#plugins">Plugins</a>
+      <a href="#chain">The chain</a>
+      <a href="#pack">The pack</a>
+      <a href="#install">Install</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn" data-buy="pack" href="#pack">Get the pack <span class="price" data-price="pack"></span></a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap grid">
+      <div>
+        <img class="wordmark" src="img/wordmark.webp" alt="Dungeon Pack" width="1218" height="252">
+        <p class="label by">by FFMB Joey</p>
+        <p class="thesis">Nine VST3 plugins for dark, loud, underground vocals.</p>
+        <p class="sub">Tune it hard, stack it, crush it, drown it in a crypt, then master it loud. Every plugin looks and works the same way, and they're built for FL Studio on Windows.</p>
+        <div class="offer" aria-label="Pack offer">
+          <p class="label">The whole pack</p>
+          <div class="row" style="margin-top:10px">
+            <span class="big" data-price="pack"></span>
+            <s data-price="sum"></s>
+            <span class="save" data-save></span>
+          </div>
+          <a class="btn" data-buy="pack" href="#pack">Buy all nine</a>
+          <p class="fine">Instant download. All nine plugins as Windows VST3.</p>
+        </div>
+      </div>
+      <div class="faces" id="faces" aria-label="The nine plugins"></div>
+    </div>
+  </div>
+
+  <div class="wrap"><div class="thorn-rule" aria-hidden="true"></div></div>
+
+  <section id="chain">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="label">Where they go</p>
+          <h2>One vocal chain</h2>
+        </div>
+        <p>The pack is built as a chain. Put them on your vocal track in this order, and the last one on your master.</p>
+      </div>
+      <ol class="chain" id="chainList"></ol>
+      <div class="chain-notes">
+        <div><b>Dungeon Key</b> goes on the beat. One click sends the key to every Dungeon Tune and Dungeon Doubler with LINK on.</div>
+        <div><b>Dungeon Master</b> goes last on the master track. Pick a loudness target and hit AIM.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="plugins">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="label">The catalogue</p>
+          <h2>Buy one, or all nine</h2>
+        </div>
+        <p>Every plugin is sold on its own. Click a screenshot to see it full size.</p>
+      </div>
+      <div class="cards" id="cards"></div>
+    </div>
+  </section>
+
+  <section id="pack" class="pack">
+    <div class="wrap grid">
+      <div>
+        <p class="label">Dungeon Pack</p>
+        <h2>Every plugin. One price.</h2>
+        <ol id="packList"></ol>
+      </div>
+      <div class="offer">
+        <p class="label">All nine plugins</p>
+        <div class="row" style="margin-top:10px">
+          <span class="big" data-price="pack"></span>
+          <s data-price="sum"></s>
+        </div>
+        <p class="save" data-save style="margin-top:10px"></p>
+        <a class="btn" data-buy="pack" href="#pack">Buy the pack</a>
+        <p class="fine">Windows 10 or 11, 64-bit, VST3.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="install">
+    <div class="wrap two">
+      <div class="box">
+        <p class="label">Install</p>
+        <h3 style="margin-top:8px">Three steps</h3>
+        <ol class="steps">
+          <li><span><b>Download</b> the zip from your receipt and unzip it.</span></li>
+          <li><span><b>Drag</b> the <code>.vst3</code> files into <code>C:\Program Files\Common Files\VST3</code>.</span></li>
+          <li><span>In FL Studio, open <b>Options → Manage plugins</b> and click <b>Find plugins</b>. They show up under <b>FFMB Joey</b>.</span></li>
+        </ol>
+      </div>
+      <div class="box">
+        <p class="label">Requirements</p>
+        <h3 style="margin-top:8px">What you need</h3>
+        <dl class="reqs">
+          <dt>System</dt><dd>Windows 10 or 11, 64-bit</dd>
+          <dt>Format</dt><dd>VST3</dd>
+          <dt>DAW</dt><dd>Made for FL Studio. Any DAW that loads VST3 plugins works.</dd>
+          <dt>Mac</dt><dd>Not available yet</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="head"><div><p class="label">Questions</p><h2>FAQ</h2></div></div>
+      <div id="faqList">
+        <details><summary>What's the difference between buying one plugin and the pack?</summary>
+          <p>A single plugin gets you that one plugin. The pack gets you all nine for far less than buying them one by one.</p></details>
+        <details><summary>Do the plugins work together?</summary>
+          <p>Yes. Dungeon Key finds the key of your beat and sends it to Dungeon Tune and Dungeon Doubler, so the autotune and harmonies are always in the right key. They also share one look, so once you know one you know all of them.</p></details>
+        <details><summary>Does Dungeon Tune do the hard, robotic autotune sound?</summary>
+          <p>That's its default. HARD mode snaps every note instantly and dead flat, and the HEAVY knob takes it from a clean snap to a full robot voice. CLASSIC mode is there for natural tuning.</p></details>
+        <details><summary>Will they make my mix lag?</summary>
+          <p>Every plugin tells FL Studio its latency, so everything stays lined up automatically. Dungeon Tune also has a Low Latency mode (about 13 ms) for recording through it.</p></details>
+        <details><summary>Is there a Mac version?</summary>
+          <p>Not yet. Right now the plugins are Windows VST3 only.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="img/wordmark.webp" alt="Dungeon Pack" width="1218" height="252">
+    <span>© <span id="yr">2026</span> FFMB Joey. All rights reserved.</span>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Plugin screenshot">
+  <figure>
+    <img id="lbImg" alt="">
+    <figcaption>
+      <span class="label" id="lbName"></span>
+      <span style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn" id="lbBuy" href="#plugins">Buy</a>
+        <button class="btn ghost" id="lbClose" type="button">Close</button>
+      </span>
+    </figcaption>
+  </figure>
+</div>
+<div class="toast" id="toast" hidden role="status"></div>
+
+<script>
+/* ======================================================================
+   STORE SETTINGS: edit prices and paste your checkout links here.
+   Each "checkout" is the link from your shop (Gumroad, Lemon Squeezy,
+   Payhip...). Leave it "" and the button says the checkout isn't open yet.
+   ====================================================================== */
+const STORE = {
+  currency: "USD",
+  pack: { price: 79, checkout: "" },
+  plugins: [
+    { id: "tune",    name: "Dungeon Tune",    tag: "Autotune",        price: 29, checkout: "",
+      line: "Heavy robotic autotune, or natural tuning when you want it.",
+      points: ["HARD mode with a HEAVY knob: clean snap to full robot", "CLASSIC mode with retune speed, humanize and vibrato", "Pitch shift that stays in key, plus formant", "Low Latency mode for recording, LINK to Dungeon Key"] },
+    { id: "rack",    name: "Dungeon Rack",    tag: "Vocal chain",     price: 25, checkout: "",
+      line: "A full vocal channel strip run by one big knob.",
+      points: ["Noise gate and Auto Level for any recording", "Compress plus SMASH parallel compression", "Body, presence and air, a de-esser and saturation", "LOUD limiter and 6 styles, from Clean to Rage"] },
+    { id: "doubler", name: "Dungeon Doubler", tag: "Stacks",          price: 19, checkout: "",
+      line: "One take becomes a wide stack with octaves and harmony.",
+      points: ["2 to 8 doubles spread across the stereo field", "Octave down and up layers with natural formants", "In-key harmony: 3rd up, 5th up, 3rd down, 4th down", "Takes its key from Dungeon Key"] },
+    { id: "sound",   name: "Dungeon Sound",   tag: "Placement",       price: 15, checkout: "",
+      line: "Put the vocal anywhere in the room: left, right, front or back.",
+      points: ["Drag the vocal around a top-down room", "Front/back distance: darker and roomier as it moves back", "AUTO PAN locked to your project tempo", "See the exact path it will take before you hit play"] },
+    { id: "delay",   name: "Dungeon Delay",   tag: "Echo",            price: 19, checkout: "",
+      line: "Tempo-synced tape delay with a reverse mode.",
+      points: ["Stereo, Ping-Pong and Reverse echoes", "HOLD loops the echoes forever for stutters", "Tape drive, wobble and filters on every repeat", "Ducking keeps the echoes out of your words"] },
+    { id: "verb",    name: "Dungeon Verb",    tag: "Space",           price: 19, checkout: "",
+      line: "Dark stereo reverb, from a tight room to an endless crypt.",
+      points: ["Room, Hall, Cathedral and Crypt", "FREEZE holds the tail forever", "Distance, early reflections, width and side", "Ducking and a mix curve made to sit under vocals"] },
+    { id: "crush",   name: "Dungeon Crush",   tag: "Distortion",      price: 15, checkout: "",
+      line: "Distortion and bitcrush for blown-out vocals and 808s.",
+      points: ["Tape, Tube, Fuzz, Rage (wavefolder) and Blown", "Oversampled, so it stays clean even pushed hard", "Bit depth and sample-rate crush", "Auto Gain keeps the volume level while you push it"] },
+    { id: "key",     name: "Dungeon Key",     tag: "Key finder",      price: 12, checkout: "",
+      line: "Finds the key of any beat and sends it to your autotune.",
+      points: ["Detects the key and the beat's tuning in cents", "Shows the runner-up keys and the relative key", "One click sends the key to Tune and Doubler", "Works on loops, samples and full beats"] },
+    { id: "master",  name: "Dungeon Master",  tag: "Mastering",       price: 39, checkout: "",
+      line: "Loud, clean, hard-hitting masters on your master channel.",
+      points: ["True-peak limiter plus an oversampled clipper", "Glue, punch, weight, air, width and bass mono", "Real LUFS meters, with AIM to hit your target loudness", "MATCH LEVEL to compare against your mix fairly"] },
+  ],
+  // the vocal chain order shown in "Where they go"
+  chain: [
+    ["tune", "Snap it to the key"], ["rack", "Clean, compress, make it loud"], ["doubler", "Stack the hook"],
+    ["sound", "Place it in the room"], ["delay", "Echo the ends of lines"], ["verb", "Give it a space"], ["crush", "Grit when you want it"],
+  ],
+};
+
+const money = (n) => new Intl.NumberFormat(undefined, { style: "currency", currency: STORE.currency, maximumFractionDigits: n % 1 ? 2 : 0 }).format(n);
+const byId = Object.fromEntries(STORE.plugins.map((p) => [p.id, p]));
+const sum = STORE.plugins.reduce((a, p) => a + p.price, 0);
+const img = (id) => `img/dungeon-${id}.webp`;
+
+// prices
+document.querySelectorAll('[data-price="pack"]').forEach((el) => (el.textContent = money(STORE.pack.price)));
+document.querySelectorAll('[data-price="sum"]').forEach((el) => (el.textContent = money(sum) + " separately"));
+document.querySelectorAll("[data-save]").forEach((el) => (el.textContent = "Save " + money(sum - STORE.pack.price)));
+
+// checkout: real link when set, otherwise an honest notice
+const toast = document.getElementById("toast");
+let toastTimer;
+function say(msg) {
+  toast.textContent = msg; toast.hidden = false;
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => (toast.hidden = true), 3600);
+}
+function wireBuy(a, item, label) {
+  if (item.checkout) {
+    a.href = item.checkout; a.target = "_blank"; a.rel = "noopener";
+  } else {
+    a.addEventListener("click", (e) => { e.preventDefault(); say(`Checkout for ${label} isn't open yet. Check back soon.`); });
+  }
+}
+document.querySelectorAll('[data-buy="pack"]').forEach((a) => wireBuy(a, STORE.pack, "the Dungeon Pack"));
+
+// lightbox
+const lb = document.getElementById("lightbox"), lbImg = document.getElementById("lbImg"),
+      lbName = document.getElementById("lbName"), lbClose = document.getElementById("lbClose");
+let lastFocus = null;
+function openShot(p) {
+  lastFocus = document.activeElement;
+  lbImg.src = img(p.id); lbImg.alt = p.name + " screenshot"; lbName.textContent = p.name;
+  const old = document.getElementById("lbBuy"), fresh = old.cloneNode(true); old.replaceWith(fresh);
+  fresh.textContent = "Buy " + money(p.price); fresh.removeAttribute("target"); fresh.href = "#plugins";
+  wireBuy(fresh, p, p.name);
+  lb.hidden = false; lbClose.focus();
+}
+function closeShot() { lb.hidden = true; if (lastFocus) lastFocus.focus(); }
+lbClose.addEventListener("click", closeShot);
+lb.addEventListener("click", (e) => { if (e.target === lb) closeShot(); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !lb.hidden) closeShot(); });
+
+// hero faces (all nine)
+const faces = document.getElementById("faces");
+["tune", "rack", "master", "doubler", "verb", "crush", "key", "delay", "sound"].forEach((id) => {
+  const p = byId[id], b = document.createElement("button");
+  b.type = "button"; b.setAttribute("aria-label", "View " + p.name);
+  b.innerHTML = `<img src="${img(id)}" alt="" width="1160" height="720" loading="eager"><span>${p.name.replace("Dungeon ", "")}</span>`;
+  b.addEventListener("click", () => openShot(p));
+  faces.appendChild(b);
+});
+
+// chain
+document.getElementById("chainList").innerHTML = STORE.chain.map(([id, why], i) =>
+  `<li><div class="slot">Slot ${i + 1}</div><div class="nm">${byId[id].name}</div><div class="why">${why}</div></li>`).join("");
+
+// cards
+const cards = document.getElementById("cards");
+STORE.plugins.forEach((p) => {
+  const c = document.createElement("article");
+  c.className = "card"; c.id = "plugin-" + p.id;
+  c.innerHTML = `
+    <button class="shot" type="button" aria-label="See ${p.name} full size"><img src="${img(p.id)}" alt="${p.name} interface" width="1160" height="720" loading="lazy"></button>
+    <div class="body">
+      <p class="label tag">${p.tag}</p>
+      <h3>${p.name}</h3>
+      <p class="line">${p.line}</p>
+      <ul>${p.points.map((t) => `<li>${t}</li>`).join("")}</ul>
+      <div class="buy">
+        <span class="amt">${money(p.price)}<small>Windows VST3</small></span>
+        <a class="btn" href="#plugins">Buy</a>
+      </div>
+    </div>`;
+  c.querySelector(".shot").addEventListener("click", () => openShot(p));
+  wireBuy(c.querySelector(".buy .btn"), p, p.name);
+  cards.appendChild(c);
+});
+
+// pack list
+document.getElementById("packList").innerHTML = STORE.plugins.map((p) => `<li>${p.name}<span>${money(p.price)}</span></li>`).join("");
+document.getElementById("yr").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
